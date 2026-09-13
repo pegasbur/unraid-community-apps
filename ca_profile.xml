@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<CommunityApplications>
+  <Profile>
+    Pegasbur's Repository provides Unraid Community Apps templates for applications maintained by Pegasbur, including Subtitle Edit and BDInfo.
+  </Profile>
+
+  <WebPage>https://github.com/pegasbur/unraid-community-apps</WebPage>
+  <Forum>https://github.com/pegasbur/unraid-community-apps/issues</Forum>
+
+  <DonateLink>https://buymeacoffee.com/pegasbur</DonateLink>
+  <DonateText>Buy me a coffee</DonateText>
+</CommunityApplications>
