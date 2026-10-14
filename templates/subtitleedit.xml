@@ -14,6 +14,7 @@
   <ReadMe>https://raw.githubusercontent.com/pegasbur/subtitleedit/main/README.md</ReadMe>
 
   <Overview>Run native Linux Subtitle Edit in a web browser. Includes FFmpeg, libmpv, Tesseract OCR, browser audio, GTK file chooser integration, persistent settings, and Intel/AMD hardware video decoding. No Wine or virtual machine is used.</Overview>
+  <Description>Native Linux Subtitle Edit with browser-based GUI access, persistent settings, browser audio, web file management, clipboard synchronization, OCR support, and optional Intel/AMD hardware acceleration.</Description>
   <Category>MediaApp:Video Tools:</Category>
   <WebUI>http://[IP]:[PORT:5800]/</WebUI>
 
@@ -34,7 +35,7 @@
     <TagDescription>Latest tested stable Subtitle Edit release.</TagDescription>
   </Branch>
 
-  <Config Name="Web UI" Target="5800" Default="3001" Mode="tcp" Description="Browser interface over HTTP. The default host port remains 3001 for compatibility with earlier releases." Type="Port" Display="always" Required="true" Mask="false">3001</Config>
+  <Config Name="Web UI" Target="5800" Default="5800" Mode="tcp" Description="Port used to access the Subtitle Edit web interface." Type="Port" Display="always" Required="true" Mask="false">5800</Config>
 
   <Config Name="Appdata" Target="/config" Default="/mnt/user/appdata/subtitleedit" Mode="rw" Description="Persistent Subtitle Edit settings, GTK bookmarks, OCR databases, downloaded language models, and GUI state." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/subtitleedit</Config>
 
@@ -48,17 +49,29 @@
 
   <Config Name="Browser audio" Target="WEB_AUDIO" Default="1" Mode="" Description="Stream Subtitle Edit audio through the browser. The browser may require one click before allowing playback." Type="Variable" Display="advanced" Required="true" Mask="false">1</Config>
 
+  <Config Name="Host clipboard sync" Target="WEB_HOST_CLIPBOARD_SYNC" Default="1" Mode="" Description="Synchronize text between the browser clipboard and Subtitle Edit when supported by the browser." Type="Variable" Display="advanced" Required="false" Mask="false">1</Config>
+
+  <Config Name="Web file manager" Target="WEB_FILE_MANAGER" Default="1" Mode="" Description="Enable the browser-based file manager for mapped container paths." Type="Variable" Display="advanced" Required="false" Mask="false">1</Config>
+
+  <Config Name="Web file manager allowed paths" Target="WEB_FILE_MANAGER_ALLOWED_PATHS" Default="AUTO" Mode="" Description="Paths accessible to the web file manager. AUTO automatically includes commonly used and mapped container paths." Type="Variable" Display="advanced" Required="false" Mask="false">AUTO</Config>
+
+  <Config Name="Dark mode" Target="DARK_MODE" Default="0" Mode="" Description="Set to 1 to enable dark mode for the browser GUI environment." Type="Variable" Display="advanced" Required="false" Mask="false">0</Config>
+
   <Config Name="Keep application running" Target="KEEP_APP_RUNNING" Default="1" Mode="" Description="Restart Subtitle Edit inside the container if its main window is closed." Type="Variable" Display="advanced" Required="true" Mask="false">1</Config>
 
   <Config Name="Initial display width" Target="DISPLAY_WIDTH" Default="1920" Mode="" Description="Initial virtual desktop width in pixels. Browser remote resizing can adjust it later." Type="Variable" Display="advanced" Required="true" Mask="false">1920</Config>
 
   <Config Name="Initial display height" Target="DISPLAY_HEIGHT" Default="1080" Mode="" Description="Initial virtual desktop height in pixels. Browser remote resizing can adjust it later." Type="Variable" Display="advanced" Required="true" Mask="false">1080</Config>
 
+  <Config Name="Web listening port (non-Bridge network)" Target="WEB_LISTENING_PORT" Default="5800" Mode="" Description="Internal web server port. Normally leave at 5800; relevant when using a network type other than Bridge." Type="Variable" Display="advanced" Required="false" Mask="false">5800</Config>
+
   <Config Name="Intel/AMD GPU device (optional)" Target="/dev/dri" Default="" Mode="rw" Description="Enter /dev/dri to enable Intel or AMD rendering and hardware video decoding. Leave blank for CPU-only operation." Type="Device" Display="advanced" Required="false" Mask="false"></Config>
 
   <Config Name="Secure connection (optional)" Target="SECURE_CONNECTION" Default="0" Mode="" Description="Set to 1 for direct HTTPS with a generated self-signed certificate. Normally leave disabled when HTTPS is provided by a trusted reverse proxy." Type="Variable" Display="advanced" Required="false" Mask="false">0</Config>
 
   <Config Name="Web authentication (optional)" Target="WEB_AUTHENTICATION" Default="0" Mode="" Description="Set to 1 to enable jlesage web authentication. Direct authentication also requires Secure connection to be enabled." Type="Variable" Display="advanced" Required="false" Mask="false">0</Config>
+
+  <Config Name="Web authentication token validity" Target="WEB_AUTHENTICATION_TOKEN_VALIDITY_TIME" Default="24" Mode="" Description="Lifetime in hours of a successful web-authentication session token." Type="Variable" Display="advanced" Required="false" Mask="false">24</Config>
 
   <Config Name="Web authentication username" Target="WEB_AUTHENTICATION_USERNAME" Default="" Mode="" Description="Optional username used when web authentication is enabled." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
 
