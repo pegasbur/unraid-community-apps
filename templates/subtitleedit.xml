@@ -19,7 +19,7 @@
   <WebUI>http://[IP]:[PORT:5800]/</WebUI>
 
   <TemplateURL>https://raw.githubusercontent.com/pegasbur/unraid-community-apps/main/templates/subtitleedit.xml</TemplateURL>
-  <Icon>https://raw.githubusercontent.com/pegasbur/subtitleedit/main/unraid/icon.png</Icon>
+  <Icon>https://raw.githubusercontent.com/pegasbur/subtitleedit/main/assets/subtitleedit_icon.png</Icon>
 
   <ExtraParams>--shm-size=1g</ExtraParams>
   <PostArgs/>
